@@ -1,0 +1,1416 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.4">
+    
+    
+      
+        <title>多项式 - 笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bb3983ee.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="deep-orange">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="笔记" class="md-header__button md-logo" aria-label="笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              多项式
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="笔记" class="md-nav__button md-logo" aria-label="笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          ComputerScience
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ComputerScience" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          ComputerScience
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Machine Learnings
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Machine Learnings" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Machine Learnings
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ComputerScience/Machine%20Learnings/LagrangeDuality/" class="md-nav__link">
+        Lagrange对偶性
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ComputerScience/Machine%20Learnings/Logistic%20Regression/" class="md-nav__link">
+        Logistic回归和最大熵模型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ComputerScience/Machine%20Learnings/MCMC/" class="md-nav__link">
+        Chapter19 Markov Chain Monte Carlo Method
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          PyTorch
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PyTorch" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          PyTorch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ComputerScience/PyTorch/GetStarted/" class="md-nav__link">
+        PyTorch 初学
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          一些杂技
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="一些杂技" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          一些杂技
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_1" type="checkbox" id="__nav_2_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_1">
+          C and C++
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="C and C++" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          C and C++
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ComputerScience/%E4%B8%80%E4%BA%9B%E6%9D%82%E6%8A%80/C%20and%20C%2B%2B/FileOperation/" class="md-nav__link">
+        一些文件操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ComputerScience/%E4%B8%80%E4%BA%9B%E6%9D%82%E6%8A%80/C%20and%20C%2B%2B/Tricks/" class="md-nav__link">
+        一些杂技
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" type="checkbox" id="__nav_2_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_2">
+          Numpy
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Numpy" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Numpy
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ComputerScience/%E4%B8%80%E4%BA%9B%E6%9D%82%E6%8A%80/Numpy/numpy-c%2B%2B/" class="md-nav__link">
+        Numpy C-API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" type="checkbox" id="__nav_2_3_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_3">
+          Pybind
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pybind" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Pybind
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ComputerScience/%E4%B8%80%E4%BA%9B%E6%9D%82%E6%8A%80/Pybind/Build%20systems/" class="md-nav__link">
+        Pybind的build system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ComputerScience/%E4%B8%80%E4%BA%9B%E6%9D%82%E6%8A%80/Pybind/pybind/" class="md-nav__link">
+        Pybind学习
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_4" type="checkbox" id="__nav_2_3_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_4">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ComputerScience/%E4%B8%80%E4%BA%9B%E6%9D%82%E6%8A%80/Python/C-API/" class="md-nav__link">
+        Extending Python with C or C++
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_5" type="checkbox" id="__nav_2_3_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_5">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ComputerScience/%E4%B8%80%E4%BA%9B%E6%9D%82%E6%8A%80/git/basic/" class="md-nav__link">
+        Git的基本操作和常见问题
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Interdisciplinary
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Interdisciplinary" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Interdisciplinary
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Information Theory
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Information Theory" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Information Theory
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Interdisciplinary/Information%20Theory/Chapter2/" class="md-nav__link">
+        Chapter2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Interdisciplinary/Information%20Theory/Chapter3/" class="md-nav__link">
+        Chapter3 渐进均分性
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Interdisciplinary/Information%20Theory/Chapter4/" class="md-nav__link">
+        Chapter4 随机过程的熵率
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Projects
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Projects" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Projects
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          IntegerCompression
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="IntegerCompression" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          IntegerCompression
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projects/IntegerCompression/RLE/" class="md-nav__link">
+        Run-Length encoding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projects/IntegerCompression/SIMD/" class="md-nav__link">
+        SIMD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projects/IntegerCompression/code/" class="md-nav__link">
+        TurboPFor 代码阅读
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projects/IntegerCompression/zigzag/" class="md-nav__link">
+        整数压缩算法zigzag
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          testMath
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="testMath" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          testMath
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          多项式
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        多项式
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    群
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    环，交换环，域
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    数域
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Complex/" class="md-nav__link">
+        复变函数期末复习
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DS/" class="md-nav__link">
+        数据结构第四次作业
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testmath/" class="md-nav__link">
+        这是测试公式的页面
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    群
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    环，交换环，域
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    数域
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="_1">数域<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>我们依次引入群，环，域。</p>
+<h2 id="_2">群<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>如果一个代数结构<span class="arithmatex">\(&lt;S,*&gt;\)</span>满足封闭性，我们称之为原群</p>
+</li>
+<li>
+<p>若原群中的二元运算是可结合的，我们称之为半群</p>
+</li>
+<li>
+<p>在半群的基础上，增加一个单位元，我们称之为含幺半群</p>
+</li>
+<li>
+<p>如果还有逆元，那么含幺半群就成为了群</p>
+</li>
+<li>
+<p>在群的基础上，满足交换律，就得到了阿贝尔群（交换群）</p>
+</li>
+</ol>
+<h2 id="_3">环，交换环，域<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>考虑一个代数结构<span class="arithmatex">\(&lt;R,+,\times&gt;\)</span>，如果<span class="arithmatex">\(&lt;R,+&gt;\)</span>是阿贝尔群，<span class="arithmatex">\(&lt;R,\times&gt;\)</span>是含幺半群，且乘法对加法满足分配律，我们称这个代数结构为环。</p>
+<p>如果<span class="arithmatex">\(&lt;R,\times&gt;\)</span>还有交换律，我们称之为交换环。</p>
+<p>如果<span class="arithmatex">\(&lt;R,\times&gt;\)</span>也是阿贝尔群，那么我们称之为域。</p>
+<h2 id="_4">数域<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>这时，我们可以理解数域，<strong>整数环</strong>，<strong>一元多项式环</strong>，这些说法了。</p>
+<p>任一数域必定包含<span class="arithmatex">\(0,1\)</span>。</p>
+<p>最小的数域是有理数域。</p>
+<h1 id="_5">多项式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h1>
+<p>首先引入一些概念</p>
+<p>多项式<span class="arithmatex">\(f(x)\)</span>最高次项的次数称作多项式的次数。</p>
+<p>多项式的次数有以下性质</p>
+<ol>
+<li>
+<p><span class="arithmatex">\(\deg(f(x) \pm g(x)) = \max(\deg f(x) ,\deg g(x))\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\deg(f(x)g(x)) = \deg f(x) + \deg g(x)\)</span></p>
+</li>
+</ol>
+<p>与整数环上类似，多项式也有带余除法，并可以引出因式和整除的概念。</p>
+<h2 id="_6">综合除法<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>带余除法中，我们考虑<span class="arithmatex">\(g(x) = x - c\)</span>时的情形</p>
+<p><strong>（余数定理）：</strong><span class="arithmatex">\(g(x) = x - c \Rrightarrow r(x) = f(c)\)</span></p>
+<p>设<span class="arithmatex">\(f(x) = \sum_{i = 0}^n a_i x^i , q(x) = \sum_{i = 0}^{n - 1} b_i x^i\)</span>由余数定理<span class="arithmatex">\(f(x) = q(x) g(x) + f(c)\)</span>应用待定系数我们有</p>
+<div class="arithmatex">\[b_{n - 1} = a_n$$ $$b_{n - 2} = a_{n - 1} + b_{n - 1} c$$ $$\cdots\]</div>
+<p>这时我们就得到了综合除法的计算方法</p>
+<p>如果我们继续对<span class="arithmatex">\(q(x)\)</span>应用综合除法，我们最终会得到一个关于<span class="arithmatex">\((x - c)\)</span>的多项式。</p>
+<h2 id="_7">多项式的根<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p><span class="arithmatex">\(x = c\)</span>是<span class="arithmatex">\(f(x)\)</span>的根<span class="arithmatex">\(\Leftrightarrow (x - c) | f(x)\)</span>证明根据余数定理即得。</p>
+<p>根据余数定理，令<span class="arithmatex">\(f(c) = 0\)</span>即得</p>
+<p><span class="arithmatex">\(\deg f(x) \leq n\)</span>，且<span class="arithmatex">\(f(x) \neq 0\)</span>则<span class="arithmatex">\(f(x)\)</span>有不超过<span class="arithmatex">\(n\)</span>个根</p>
+<p>根据上一定理反设有超过<span class="arithmatex">\(n\)</span>个根即得矛盾</p>
+<p><span class="arithmatex">\(f(x),g(x) \in \mathbb{F}[x],\deg f(x) \leq n,\deg g(x) \leq n\)</span>，若<span class="arithmatex">\(f(x)\)</span>和<span class="arithmatex">\(f(x)\)</span>在<span class="arithmatex">\(n + 1\)</span>个点取值相同，那么这两个多项式相同</p>
+<p>构造<span class="arithmatex">\(h(x) = f(x) - g(x)\)</span>则其有<span class="arithmatex">\(n + 1\)</span>个零点，那么<span class="arithmatex">\(h(x) = 0\)</span></p>
+<h2 id="lagrange">Lagrange 插值多项式<a class="headerlink" href="#lagrange" title="Permanent link">&para;</a></h2>
+<p>我们考虑这样的问题：给定平面上的<span class="arithmatex">\(n + 1\)</span>个点<span class="arithmatex">\((a_i,b_i)\)</span>，求出一个经过这<span class="arithmatex">\(n +1\)</span>个点的多项式函数。根据上述定理，这个多项式显然是唯一的。</p>
+<p>我们考虑这个问题的简化版本，如果<span class="arithmatex">\(b_i \neq 0,b{j \neq i} = 0\)</span>，我们求出满足条件的函数<span class="arithmatex">\(f_i\)</span>，必然有
+<span class="arithmatex">\(<span class="arithmatex">\(f_i(x) = c(x - a_1)\cdots(x - a_{i - 1})(x - a_{i + 1})\cdots(x - a_n)\)</span>\)</span>
+代入条件<span class="arithmatex">\(f_i(x_i) = b_i\)</span>，我们得到
+<span class="arithmatex">\(<span class="arithmatex">\(c = \frac{b_i}{(a_i - a_1)\cdots(a_i - a_{i -1})(a_i - a_{i + 1})\cdot(a_i - a_n)}\)</span>\)</span>
+这时我们令<span class="arithmatex">\(f(x) = \sum_{i = 1}^n f_i(x)\)</span>就得到了要求的Lagrange多项式</p>
+<p>如果令<span class="arithmatex">\(F(x) = \prod_{i = 1}^{n + 1} (x - a_i)\)</span>我们可以得到更加优雅的形式
+<span class="arithmatex">\(<span class="arithmatex">\(f(x) = \sum_{i = 1}^n\frac{b_i F(x)}{(x - a_i)F^\prime(a_i)}\)</span>\)</span></p>
+<h1 id="_8">最大公因式<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
+<p>我们首先定义最大公因式为可以整除两个多项式的所有公因式的因式。</p>
+<p>下面考虑最大公因式的存在性与唯一性，唯一性由两个多项式互相整除，之间只能相差一个倍数给出，存在性由Eucildean算法给出。</p>
+<h2 id="_9">欧几里得算法的过程<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>我们进行辗转相除，设<span class="arithmatex">\(r_3(x) = 0\)</span> <span class="arithmatex">\(<span class="arithmatex">\(f(x) = q_1(x) g(x) + r_1(x)\)</span>\)</span>
+<span class="arithmatex">\(<span class="arithmatex">\(g(x) = q_2(x)r_1(x) + r_2(x)\)</span>\)</span> <span class="arithmatex">\(<span class="arithmatex">\(r_1(x) = q_3(x)r_2(x) + r_3(x)\)</span>\)</span>
+假设<span class="arithmatex">\(r_3(x) = 0\)</span>我们就得到了最大公因式<span class="arithmatex">\(r_2(x)\)</span></p>
+<h2 id="bezout">Bezout等式<a class="headerlink" href="#bezout" title="Permanent link">&para;</a></h2>
+<p>对于任意<span class="arithmatex">\(f(x),g(x)\)</span>存在<span class="arithmatex">\(u(x),v(x) \in \mathbb{F}\)</span>使得<span class="arithmatex">\(<span class="arithmatex">\(u(x)f(x) + v(x)g(x) = \gcd(f(x),g(x))\)</span>\)</span></p>
+<p>我们只考虑上面欧几里得算法的简单情况
+<span class="arithmatex">\(<span class="arithmatex">\(\gcd(f(x),g(x)) = r_2(x) = g(x) - q_2(x)r_1(x) = g(x) - q_2(x)(f(x) - q_1(x)g(x))\)</span>\)</span>
+将这个式子略加整理，我们就得到了
+<span class="arithmatex">\(<span class="arithmatex">\(r_2(x) = -q_2(x)f(x)+ (q_1(x)q_2(x) + 1) g(x)\)</span>\)</span>
+其他情况类似，可以递归导出。</p>
+<p>根据<span class="arithmatex">\(f(x),g(x)\)</span>求<span class="arithmatex">\(u(x),v(x)\)</span>的过程也可以用矩阵描述，更加简洁。</p>
+<p><strong>值得注意的一件事是这里的<span class="arithmatex">\(u(x),v(x)\)</span>均不是唯一的，可以给出下面的例子</strong>
+<span class="arithmatex">\(<span class="arithmatex">\([u(x) + g(x)]f(x) + [v(x) - f(x)]g(x) = \gcd(f(x),g(x))\)</span>\)</span></p>
+<h1 id="_10">因式分解<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h1>
+<h2 id="_11">互素<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>下面在多项式环上引入互素的概念，如果两个多项式的最大公因式为<span class="arithmatex">\(1\)</span>那么我们称这两个多项式互素。</p>
+<p><span class="arithmatex">\(f(x),g(x)\)</span>互素等价于存在<span class="arithmatex">\(u(x),v(x) \in \mathbb{F}[x]\)</span>使得<span class="arithmatex">\(u(x)f(x) + v(x)g(x) = 1\)</span></p>
+<p>注意互素是一个与数域无关的概念，如果数域<span class="arithmatex">\(\mathbb F \in \mathbb K\)</span>，那么在<span class="arithmatex">\(\mathbb F[x]\)</span>中互素的两个多项式在<span class="arithmatex">\(\mathbb K[x]\)</span>中一定互素</p>
+<p>下面介绍互素的一些性质</p>
+<p>若<span class="arithmatex">\(f(x),g(x)\)</span>互素且<span class="arithmatex">\(f_1(x) | g(x),f_2(x)|g(x)\)</span>那么一定有<span class="arithmatex">\(f_1(x)f_2(x)|g(x)\)</span></p>
+<p>根据性质条件，我们设<span class="arithmatex">\(g(x) = f_1(x)s_1(x) = f_2(x)s_2(x), u(x)f_1(x) + v(x)f_2(x) = 1\)</span>
+<span class="arithmatex">\(<span class="arithmatex">\(g(x) = g(x) \times 1 = g(x)u(x)f_1(x) + g(x)v(x)f_2(x) = f_1(x)f_2(x) (u(x)s_1(x) + v(x)s_2(x))\)</span>\)</span>
+这说明了<span class="arithmatex">\(f_1(x)f_2(x) | g(x)\)</span></p>
+<p>设<span class="arithmatex">\(\gcd(f(x),g(x)) = 1,f(x) | g(x)h(x)\)</span>则有<span class="arithmatex">\(f(x) | h(x)\)</span></p>
+<div class="arithmatex">\[u(x)f(x) + g(x)v(x) = 1$$ 再次应用上一性质证明过程中的变形技巧。
+$$h(x) = h(x)u(x)\mathbf{f(x)} + \mathbf{f(x)g(x)}v(x)\]</div>
+<p>设<span class="arithmatex">\(\gcd(f(x),g(x)) = d(x)\)</span>那么<span class="arithmatex">\(\gcd(\frac{f(x)}{d(x)} , \frac{g(x)}{d(x)}) = 1\)</span></p>
+<p>设<span class="arithmatex">\(\gcd(f(x),g(x)) = d(x)\)</span>那么<span class="arithmatex">\(\gcd(f(x)t(x), g(x)t(x)) = t(x)d(x)\)</span></p>
+<p>设<span class="arithmatex">\(\gcd(f_1(x),g(x)) = 1, \gcd(f_2(x),g(x)) = 1\)</span>则有<span class="arithmatex">\(\gcd(f_1(x)f_2(x),g(x)) = 1\)</span></p>
+<p>根据Bezout等式，我们有 <span class="arithmatex">\(<span class="arithmatex">\(u_1(x)f_1(x) + v_1(x)g(x) = 1\)</span>\)</span>
+<span class="arithmatex">\(<span class="arithmatex">\(u_2(x)f_2(x) + v_2(x)g(x) = 1\)</span>\)</span> 两式相乘即得对应结论的Bezout等式</p>
+<h2 id="_12">不可约多项式<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>如果一个多项式<span class="arithmatex">\(f(x)\)</span>不能写成两个次数更低的多项式的乘积，那么我们称<span class="arithmatex">\(f(x)\)</span>为不可约多项式。</p>
+<p>从这个定义中，我们可以看出来，不可约多项式在多项式环中的地位和素数在数论中的地位相近。</p>
+<p>同互素的概念不同，不可约多项式是一个和数域有关的概念。</p>
+<p>我们将不可约多项式的性质列举如下</p>
+<ol>
+<li>
+<p>若<span class="arithmatex">\(f(x) \in \mathbb{F}[x]\)</span>不可约，则<span class="arithmatex">\(\forall c \in \mathbb F,c \neq 0\)</span>，<span class="arithmatex">\(cf(x)\)</span>不可约</p>
+</li>
+<li>
+<p>若两个数域<span class="arithmatex">\(\mathbb{F \in K}\)</span>，<span class="arithmatex">\(f(x)\)</span>在<span class="arithmatex">\(\mathbb{K}[x]\)</span>上不可约，那么在<span class="arithmatex">\(\mathbb {F}[x]\)</span>上一定不可约。（数域的扩充为因式分解提供了更多可能性）</p>
+</li>
+<li>
+<p>设<span class="arithmatex">\(f(x) \in \mathbb F[x]\)</span>是不可约多项式，且<span class="arithmatex">\(f(x) | g(x)h(x)\)</span>那么一定有<span class="arithmatex">\(f(x)|g(x)\)</span>或<span class="arithmatex">\(f(x)|h(x)\)</span></p>
+</li>
+<li>
+<p>设<span class="arithmatex">\(f(x) \in \mathbb F[x]\)</span>是不可约多项式，则<span class="arithmatex">\(f(x)|g(x)\)</span>或<span class="arithmatex">\(\gcd(f(x),g(x)) = 1\)</span></p>
+</li>
+</ol>
+<h3 id="mathbb-cx"><span class="arithmatex">\(\mathbb C[x]\)</span>上的不可约多项式<a class="headerlink" href="#mathbb-cx" title="Permanent link">&para;</a></h3>
+<p><strong>代数基本定理：</strong>复数域上的<span class="arithmatex">\(n\)</span>次多项式必定有一个根。</p>
+<p>由此可自然地推出<span class="arithmatex">\(n\)</span>次多项式一个有<span class="arithmatex">\(n\)</span>个根，在这里整理几种证明</p>
+<p>由代数基本定理可知，在<span class="arithmatex">\(\mathbb F[x]\)</span>上，不可约多项式即为一次多项式。</p>
+<h3 id="mathbb-rx"><span class="arithmatex">\(\mathbb R[x]\)</span>上的不可约多项式<a class="headerlink" href="#mathbb-rx" title="Permanent link">&para;</a></h3>
+<p>首先在实数域上有虚根成对定理</p>
+<p>实数域上一元<span class="arithmatex">\(n\)</span>次方程虚根成对出现</p>
+<p>共轭运算与幂运算交换，对原方程取共轭即得。</p>
+<p>因此，<span class="arithmatex">\(\mathbb R[x]\)</span>上的不可约多项式为一次多项式和满足<span class="arithmatex">\(b^2 &lt; 4ac\)</span>的二次多项式</p>
+<h3 id="mathbb-qx"><span class="arithmatex">\(\mathbb Q[x]\)</span>上的不可约多项式<a class="headerlink" href="#mathbb-qx" title="Permanent link">&para;</a></h3>
+<p>首先我们指出，在<span class="arithmatex">\(\mathbb Q[x]\)</span>上的多项式与在<span class="arithmatex">\(\mathbb Z[x]\)</span>上的多项式无本质差别，只相差一个整数倍。我们考虑<span class="arithmatex">\(\mathbb Z[x]\)</span>上的情况。</p>
+<p>设<span class="arithmatex">\(f(x) \in \mathbb Z[x], f(x) = a_nx^n + a_{n - 1}x^{n - 1} + \cdots + +a_1 x + a_0\)</span>若<span class="arithmatex">\(f(\frac rs) = 0\)</span>，其中<span class="arithmatex">\(r,s \in \mathbb Z\)</span>则
+<span class="arithmatex">\(<span class="arithmatex">\(r | a_0 , s | a_n\)</span>\)</span></p>
+<p>将方程<span class="arithmatex">\(f(\frac rs) = 0\)</span>两边同时乘以<span class="arithmatex">\(s^n\)</span>并调整，得到下述方程
+<span class="arithmatex">\(<span class="arithmatex">\(a_nr^n + a_{n - 1} r^{n-1} s + \cdots + a_1 r s^{n - 1} + a_0 s^n = 0\)</span>\)</span>
+这时由互素条件，我们有<span class="arithmatex">\(s | a_n, r | a_0\)</span></p>
+<p>于是我们给出了判别多项式是否有有理根的做法。
+注意没有有理根并不意味着不可约，例如<span class="arithmatex">\(f(x) = (x - 1) ^3\)</span>。</p>
+<h1 id="vieta">Vieta定理<a class="headerlink" href="#vieta" title="Permanent link">&para;</a></h1>
+<p>我们直接给出结论 <span class="arithmatex">\(<span class="arithmatex">\(\sum_{i = 1}^{n} x_i = - \frac{a_{n-1}}{a_n}\)</span>\)</span>
+<span class="arithmatex">\(<span class="arithmatex">\(\sum_{1 \leq i_1 \leq \cdots \leq i_k \leq n} x_{i_1}x_{i_2}\cdots x_{i_n} = (-1)^k \frac{a_{n - k}}{a _ n}\)</span>\)</span>
+<span class="arithmatex">\(<span class="arithmatex">\(\prod_{i = 1}^n = (-1)^n \frac{a_0}{a_n}\)</span>\)</span></p>
+<h1 id="_13">整数环知识<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h1>
+<p>为了对比整数环和多项式环上的性质，我们复习一些数论知识。</p>
+<h2 id="_14">不定方程<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<h2 id="_15">中国剩余定理<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>我们考虑模线性同余方程组，其中整数<span class="arithmatex">\(m_i\)</span>互素，<span class="arithmatex">\(a_i\)</span>任取 <span class="arithmatex">\(<span class="arithmatex">\(\left\{
+      \begin{array}{l}
+      x \equiv a_1 \pmod{m_1} \\
+      x \equiv a_2 \pmod{m_2} \\
+      \cdots\\
+      x \equiv a_n \pmod{m_n} \
+      \end{array}
+    \right.\)</span>\)</span></p>
+<p>方程组的解为
+<span class="arithmatex">\(<span class="arithmatex">\(x \equiv \sum_{i = 1}^n a_i \frac{N}{m_i} [(\frac{N}{m_i})^{-1}]_{m_i} \pmod N\)</span>\)</span></p>
+<p>而我们在一元多项式环上，也有带余除法的性质，因此CRT在多项式环上也有对应表现。比如Lagrange插值多项式。</p>
+<p>重新考虑插值问题，也可以理解为一个模线性同余方程组。</p>
+<div class="arithmatex">\[\left\{
+      \begin{array}{l}
+      f(x) \equiv b_1 \pmod{x - a_1} \\
+      f(x) \equiv b_2 \pmod{x - a_2} \\
+      \cdots\\
+      f(x) \equiv b_{n + 1} \pmod{x - a_{n + 1}} \
+      \end{array}
+    \right.\]</div>
+<p>而结果
+<span class="arithmatex">\(<span class="arithmatex">\(f(x) = \sum_{i = 1}^{n + 1} b_i \frac{F(x)}{(x - a_i)} * [(\frac{F(x)}{x - a_i}) _{a_i}]^{-1}\)</span>\)</span>
+也有着高度的一致性。</p>
+<p>有必要讨论一下多项式环上的中国剩余定理。在多项式环上，已经有了素数，不可约多项式的概念，
+而两者的不一致处来自于我们所求的插值多项式是在模<span class="arithmatex">\(\prod_{i = 1}^{n + 1}(x - x_i)\)</span>的意义下进行的，与中国剩余定理求最小值的情况类似。</p>
+<h1 id="_16">多项式内容补充<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h1>
+<h2 id="_17">重因式<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<p>为了讨论重因式，首先需要引入多项式的<strong>形式微商</strong>，这里的形式微商套用了数学分析中的概念，但是避开了连续性等问题。</p>
+<p>多项式的形式微商满足分析中我们熟知的微分运算法则</p>
+<p>设<span class="arithmatex">\(f(x) \in \mathbb{F}[x]\)</span>，若<span class="arithmatex">\(\mathbb{F}[x]\)</span>内的不可约多项式<span class="arithmatex">\(p(x)\)</span>是<span class="arithmatex">\(f(x)\)</span>的<span class="arithmatex">\(k\)</span>重因式，那么<span class="arithmatex">\(p(x)\)</span>是<span class="arithmatex">\(f^\prime(x)\)</span>的<span class="arithmatex">\(k - 1\)</span>重因式。</p>
+<p>按假设<span class="arithmatex">\(f(x) = p^k(x) q(z)\)</span>，且<span class="arithmatex">\(p(x) \nmid q(x)\)</span>这时，我们有</p>
+<p><span class="arithmatex">\(<span class="arithmatex">\(f^\prime(x) = kp^{k-1}(x)p^\prime(x)q(x) + p^k(x)q^\prime(x)\)</span>\)</span>
+故有<span class="arithmatex">\(p^{k-1}(x) \mid f^\prime(x)\)</span>，我们下面只需要证明<span class="arithmatex">\(p^k \nmid f^\prime (x)\)</span>，先设<span class="arithmatex">\(f^\prime(x) = p^k(x)q_1(x)\)</span>，于是有</p>
+<div class="arithmatex">\[kp^\prime(x) q(x) + p(x)q^\prime(x) = p(x) q_1(x)\]</div>
+<p>于是<span class="arithmatex">\(p(x) \mid kp^\prime (x)\)</span>，<span class="arithmatex">\(\deg p(x) &gt; \deg p'(x)\)</span>矛盾</p>
+<p>根据该定理容易证明下面两个推论</p>
+<p>不可约多项式<span class="arithmatex">\(p(x)\)</span>是<span class="arithmatex">\(f(x)\)</span>的<span class="arithmatex">\(k\)</span>重零点的充要条件是<span class="arithmatex">\(p(x) \mid f^{(i)}(x), (i = 0,1,\cdots,k-1)\)</span>，但<span class="arithmatex">\(p(x) \nmid f^{(k)}(x)\)</span></p>
+<p>在<span class="arithmatex">\(f(x) \in \mathbb{K}[x]\)</span>的素因式的标准分解式中仅出现不可约多项式的一次方幂的充要条件是
+<span class="arithmatex">\(<span class="arithmatex">\((f(x),f'(x)) = 1\)</span>\)</span></p>
+<p>首先，<span class="arithmatex">\(\mathbb {K}[x]\)</span>中的一次多项式都是不可约多项式，若将上面的结论应用到<span class="arithmatex">\(p(x) = x - a\)</span>这一特殊情况，我们就可以得到对<span class="arithmatex">\(k\)</span>重零点的讨论。</p>
+<h2 id="_18">多项式环上的中国剩余定理<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<h3 id="_19">理想<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>对于一个环来说，<strong>理想</strong>是一个类似于线性空间的子空间的概念。</p>
+<p>设<span class="arithmatex">\(I\)</span>为<span class="arithmatex">\(\mathbb{K}[x]\)</span>的一个子集，若满足以下条件</p>
+<ol>
+<li>
+<p><span class="arithmatex">\(f(x),g(x) \in I\)</span>，则<span class="arithmatex">\(f(x) - g(x) \in I\)</span></p>
+</li>
+<li>
+<p>若<span class="arithmatex">\(f(x) \in I\)</span>，则对任意<span class="arithmatex">\(g(x) \in \mathbb{K}[x]\)</span>，有<span class="arithmatex">\(g(x)f(x) \ in I\)</span></p>
+</li>
+</ol>
+<p>则我们称<span class="arithmatex">\(I\)</span>为<span class="arithmatex">\(f(x)\)</span>的一个<strong>理想</strong></p>
+<p><span class="arithmatex">\(\{0\}\)</span>和<span class="arithmatex">\(\mathbb{K}[x]\)</span>都是理想，我们称之为<strong>平凡理想</strong>，其他理想称为<strong>非平凡理想</strong>，<span class="arithmatex">\(\{0\}\)</span>又称<strong>零理想</strong>。</p>
+<p>对任意<span class="arithmatex">\(f(x)\in \mathbb{K}[x]\)</span>定义</p>
+<div class="arithmatex">\[(f(x)) = \{u(x)f(x) \mid u(x) \in \mathbb{K}[x]\}\]</div>
+<p>容易验证其为<span class="arithmatex">\(\mathbb{K}[x]\)</span>上的一个理想，称为<span class="arithmatex">\(f(x)\)</span>生成的<strong>主理想</strong></p>
+<p>下面的命题将所有理想化归到主理想讨论。</p>
+<p>设<span class="arithmatex">\(I\)</span>是<span class="arithmatex">\(\mathbb{K}[x]\)</span>的一个非零理想，则存在<span class="arithmatex">\(\mathbb{K}[x]\)</span>内的首一多项式<span class="arithmatex">\(f(x)\)</span>，使得<span class="arithmatex">\(I = (f(x))\)</span></p>
+<p>这里暂不深入讨论</p>
+<h3 id="_20">同余<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>设<span class="arithmatex">\(I\)</span>是<span class="arithmatex">\(f(x)\)</span>的一个理想，如果<span class="arithmatex">\(f(x),g(x)\in \mathbb{K}[x]\)</span>，且<span class="arithmatex">\(g(x) - f(x) \in I\)</span>，则称<span class="arithmatex">\(g(x)\)</span>与<span class="arithmatex">\(f(x)\)</span>模<span class="arithmatex">\(I\)</span>同余</p>
+<p>设<span class="arithmatex">\(I\)</span>为非平凡理想，则<span class="arithmatex">\(I = (m(x))\)</span>其中，<span class="arithmatex">\(m(x) \in \mathbb {K}[x]\)</span>，且满足<span class="arithmatex">\(\deg m(x) \geq 1\)</span>，这时有</p>
+<div class="arithmatex">\[g(x) \equiv f(x) \mod I \Leftrightarrow m(x) \mid (g(x) - f(x))\]</div>
+<p>所以我们写<span class="arithmatex">\(g(x) \equiv f(x) \mod m(x)\)</span>称<span class="arithmatex">\(g(x)\)</span>与<span class="arithmatex">\(f(x)\)</span>模<span class="arithmatex">\(m(x)\)</span>同余。</p>
+<p>首先可以验证同余有以下性质</p>
+<ol>
+<li>
+<p>反身性</p>
+</li>
+<li>
+<p>对称性</p>
+</li>
+<li>
+<p>传递性</p>
+</li>
+</ol>
+<p>因此同余关系是等价关系，<span class="arithmatex">\(\mathbb{K}[x]\)</span>内的多项式也按模<span class="arithmatex">\(m(x)\)</span>同余划分成互不相交的同余类</p>
+<h3 id="_21">中国剩余定理<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p>首先给出一个引理</p>
+<p>设<span class="arithmatex">\(q_1(x),\cdot,q_r(x)\)</span>是<span class="arithmatex">\(\mathbb{K}[x]\)</span>中两两互素且次数大于等于<span class="arithmatex">\(1\)</span>的多项式，则对任一<span class="arithmatex">\(i(1\leq i \leq r)\)</span>，存在多项式<span class="arithmatex">\(h_i(x) \in \mathbb{K}[x]\)</span>，使得
+<span class="arithmatex">\(<span class="arithmatex">\(h_i(x) \equiv 1 \mod q_i(x), h_i(x) \equiv 0 \mod q_j(x)\)</span>\)</span></p>
+<p>对任一<span class="arithmatex">\(j \neq i\)</span>，有<span class="arithmatex">\((q_i(x),q_j(x)) = 1\)</span>，于是存在<span class="arithmatex">\(u_j(x),v_j(x) \in \mathbb{K}[x]\)</span>，使得<span class="arithmatex">\(u_j(x)q_i(x) + v_j(x)q_j(x) = 1\)</span>，令
+<span class="arithmatex">\(<span class="arithmatex">\(h_i(x) = \prod_{j = 1,j \neq i} ^{r} v_j \cdot q_j\)</span>\)</span></p>
+<p>显然，我们有<span class="arithmatex">\(h_i(x) \equiv 0 \mod q_j(x) (j \neq i)\)</span>且</p>
+<div class="arithmatex">\[h_i(x) = \prod_{j \neq i}(1 - u_j q_i) = 1 + u q_i \equiv 1 \mod q_i\]</div>
+<p>根据这个引理，中国剩余定理的构造就显然了。</p>
+<h2 id="_22">多项式与数域<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
+<p>本章中，我们设数域<span class="arithmatex">\(\mathbb{K}\)</span>是数域<span class="arithmatex">\(\mathbb{F}\)</span>的扩域</p>
+<p>多项式之间的整除关系不随数域的扩大而改变</p>
+<p>设在数域<span class="arithmatex">\(\mathbb{F}[x]\)</span>中<span class="arithmatex">\(f(x) \mid g(x)\)</span>，则存在<span class="arithmatex">\(h(x) \in \mathbb{F}[x]\)</span>，使得<span class="arithmatex">\(g(x) = f(x)h(x)\)</span>，自然<span class="arithmatex">\(h(x) \in \mathbb{K}[x]\)</span>，于是在数域<span class="arithmatex">\(\mathbb K[x]\)</span>上，也有<span class="arithmatex">\(f(x) | g(x)\)</span></p>
+<p>值得我们考虑的是，当数域缩小的时候，多项式之间的整除关系是否会改变。</p>
+<p>多项式之间的整除关系不随数域的扩大和缩小改变</p>
+<p>数域扩大的情况已证。</p>
+<p>设<span class="arithmatex">\(f(x),g(x) \in \mathbb{F}[x]\)</span>而在数域<span class="arithmatex">\(\mathbb K\)</span>中<span class="arithmatex">\(f(x) \mid g(x)\)</span>，由此根据<span class="arithmatex">\(\mathbb{K}[x]\)</span>中的带余除法，<span class="arithmatex">\(\exists q(x) \in \mathbb{K}[x]\)</span>使得<span class="arithmatex">\(g(x) = q(x)\cdot f(x)\)</span>
+，若<span class="arithmatex">\(q(x)\)</span>的系数中有不属于<span class="arithmatex">\(\mathbb F\)</span>的系数，那么<span class="arithmatex">\(g(x)\)</span>的系数也会出现不属于<span class="arithmatex">\(\mathbb F\)</span>的系数，与<span class="arithmatex">\(g(x)\in \mathbb{F}[x]\)</span>矛盾。</p>
+<p>多项式的首1最大公因式不随数域的改变而改变。</p>
+<p>在数域<span class="arithmatex">\(\mathbb{K}\)</span>中，由Bezout等式<span class="arithmatex">\(\gcd_{\mathbb F} = u(x)f(x) + v(x)g(x)\)</span>，而<span class="arithmatex">\(gcd_{\mathbb K} \mid (u(x)f(x) + v(x)g(x)) = \gcd_{\mathbb{F}}\)</span>，另一方面<span class="arithmatex">\(\gcd_{\mathbb{F}} \in \mathbb{K}[x]\)</span>，因此<span class="arithmatex">\(\gcd_{\mathbb{F}} \mid \gcd_{\mathbb{K}}\)</span></p>
+<p>而多项式的可约性是随着数域的改变而改变的。</p>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/tex-mml-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../../Projects/IntegerCompression/zigzag/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 整数压缩算法zigzag" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              整数压缩算法zigzag
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Complex/" class="md-footer__link md-footer__link--next" aria-label="下一页: 复变函数期末复习" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              复变函数期末复习
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "search": "../../assets/javascripts/workers/search.361d90f1.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.289a2a4b.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

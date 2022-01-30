@@ -1,0 +1,93 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{geometry}
+\usepackage{fontspec}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{ulem}
+\usepackage{indentfirst}
+\definecolor{keywordcolor}{rgb}{0.8,0.1,0.5}
+
+\title{数据结构第四次作业}
+\author{鲍桉畅 \quad 软件02 \quad 2020012381}
+\date{\today}
+
+\geometry{a4paper,scale=0.8}
+
+\lstset{breaklines}%这条命令可以让LaTeX自动将长的代码行换行排版
+\lstset{extendedchars=false}%这一条命令可以解决代码跨页时，章节标题，页眉等汉字不显示的问题
+\lstset{
+    basicstyle          =   \sffamily,          % 基本代码风格
+    keywordstyle        =   \color{keywordcolor} \bfseries,          % 关键字风格
+    commentstyle        =   \rmfamily\itshape,  % 注释的风格，斜体
+    stringstyle         =   \ttfamily,  % 字符串风格
+    flexiblecolumns,                % 别问为什么，加上这个
+    numbers             =   left,   % 行号的位置在左边
+    showspaces          =   false,  % 是否显示空格，显示了有点乱，所以不现实了
+    numberstyle         =   \zihao{-5}\ttfamily,    % 行号的样式，小五号，tt等宽字体
+    showstringspaces    =   false,
+    captionpos          =   t,      % 这段代码的名字所呈现的位置，t指的是top上面
+    language = C++,
+}
+
+\begin{document}
+
+\maketitle
+
+\renewcommand{\proofname}{\indent\bf Proof}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\IM}{\mathbb{Im}}
+\newcommand{\Ker}{\mathbb{Ker}}
+\newcommand{\rd}{\mathrm{d}}
+%\setlength{\parindent}{2em}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{example}{Example}
+\newtheorem{solution}{Solution}
+
+\begin{solution}
+需要进行\textbf{7}次关键字比较
+\end{solution}
+
+\begin{solution}
+结果为\textbf{ABCD\#\#\#1234}
+\end{solution}
+
+\begin{solution}
+\textbf{O(n)}
+\end{solution}
+
+
+\begin{solution}
+$i = \textbf{5}$，$j = \textbf{2}$
+\end{solution}
+
+\begin{solution}
+得到的next数组为\textbf{$[-1,0,-1,0,-1,3,0,-1,0]$}
+\end{solution}
+
+\begin{solution}
+该排序算法只可能是\textbf{C}
+\end{solution}
+
+\begin{solution}
+\textbf{B}
+\end{solution}
+
+\begin{solution}
+首个非叶子结点的位置$\frac{n}{2}$，选\textbf{$B$}
+\end{solution}
+
+\end{document}
