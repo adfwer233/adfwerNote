@@ -5,7 +5,7 @@
 version: 2
 # Build the documentation with mkdocs
 mkdocs:
-  configuration: .mkdocs.yml
+  configuration: mkdocs.yml
 # Build docs in additional formats such as PDF and ePub
 formats: all
 # Set requirements required to build the documentation
