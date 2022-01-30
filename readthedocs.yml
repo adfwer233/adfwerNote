@@ -9,8 +9,4 @@ mkdocs:
 # Build docs in additional formats such as PDF and ePub
 formats: all
 # Set requirements required to build the documentation
-python:
-    install:
-        # <https://github.com/Python-Markdown/markdown/wiki/Third-Party-Extensions>
-        # <https://facelessuser.github.io/pymdown-extensions/installation/>
-        # - requirements: docs/readthedocs-requirements.txt
+
