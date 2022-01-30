@@ -1,3 +1,4 @@
 mkdocs-material
 mkdocs-material-extensions
 pymdown-extensions
+markdown_checklist
