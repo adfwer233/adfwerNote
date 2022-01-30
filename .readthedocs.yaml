@@ -10,3 +10,6 @@ mkdocs:
 formats: all
 # Set requirements required to build the documentation
 
+python:
+   install:
+   - requirements: docs/requirements.txt
