@@ -323,3 +323,91 @@ plt.show()
 ### Creating a Custom Dataset for your files
 
 有时也需要制作个性化的Dataset。一个custom的数据集需要三个函数`__init__`，`__len__`和`__getitem__`。
+
+### Preparing your data for training with DataLoaders
+
+`DataLoader`可以方便地执行reshuffle，batching等操作
+```py
+from torch.utils.data import DataLoader
+
+train_dataloader = DataLoader(training_data, batch_size=64, shuffle=True)
+test_dataloader = DataLoader(test_data, batch_size=64, shuffle=True)
+```
+
+## Transforms
+
+`transform`用于修改 feature ，`target_transform`用于修改 label 。
+
+下面这个例子：在 FashionMNIST 数据集中，feature 是 PIL image 。为了训练，我们需要将 feature 整成正规化后的 tensor， 把 label 整成 one-hot encoded tensors。 我们可以用 `ToTensor` 和 `Lambda`。
+
+```py
+ds = datasets.FashionMNIST(
+    root="data",
+    train=True,
+    download=True,
+    transform=ToTensor(),
+    target_transform=Lambda(lambda y: torch.zeros(10, dtype=torch.float).scatter_(0, torch.tensor(y), value=1))
+)
+```
+
+### ToTensor()
+
+将一个 PIL image 或是 numpy 的 `ndarray` 整成一个 `FloatTensor` ， 数据范围在$[0, 1]$之间
+
+### Lambda Transforms
+
+看一下这一条Lambda
+```py
+target_transform = Lambda(lambda y: torch.zeros(
+    10, dtype=torch.float).scatter_(dim=0, index=torch.tensor(y), value=1))
+```
+
+首先创建一个 dtype 为 float 的长度为10的tensor，然后用scatter_将`value = 1`按照 label 放到 tensor 的对应位置。
+
+下面是scatter_的一些示例代码。
+```py
+src = torch.arange(1, 11).reshape((2, 5))
+src
+index = torch.tensor([[0, 1, 2, 0]])
+torch.zeros(3, 5, dtype=src.dtype).scatter_(0, index, src)
+index = torch.tensor([[0, 1, 2], [0, 1, 4]])
+torch.zeros(3, 5, dtype=src.dtype).scatter_(1, index, src)
+
+torch.full((2, 4), 2.).scatter_(1, torch.tensor([[2], [3]]),
+           1.23, reduce='multiply')
+torch.full((2, 4), 2.).scatter_(1, torch.tensor([[2], [3]]),
+           1.23, reduce='add')
+```
+
+## Build The Neural Network
+
+`torch.nn` 这个 namespace 提供了所有构建神经网络所需要的东西。
+
+下面构建一个在 FashionMNIST 上分类 image 的 dataset。
+
+### Get Device for Training
+
+```py
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+print(f'Using {device} device')
+```
+
+
+### Define the Class
+
+和 Quick Start 中的代码一样。
+
+我们可以用 `print(model)` 来查看神经网络的结构。
+
+这是调用模型的方式，观察它用Softmax处理输出。
+```py
+X = torch.rand(1, 28, 28, device=device)
+logits = model(X)
+pred_probab = nn.Softmax(dim=1)(logits)
+y_pred = pred_probab.argmax(1)
+print(f"Predicted class: {y_pred}")
+```
+
+### Model Layers
+
+
