@@ -1,12 +1,12 @@
 ---
-title : 通过例子学习PyTorch
+title : Learning PyTorch with Examples
 ---
 
 # Learning PyTorch with Examples
 
 > 读官方文档的例子的一些记录
 
-## Warm-Up： Numpy
+### Warm-Up： Numpy
 
 训练一个三阶多项式，用它去预测$y = \sin x$，最小化Euclidean distance
 
@@ -53,7 +53,7 @@ for t in range(2000):
 print(f'Result: y = {a} + {b} x + {c} x^2 + {d} x^3')
 ```
 
-## PyTorch: Tensors
+### PyTorch: Tensors
 
 我们可以把上面的代码改成用 torch 中的 tensor 实现
 
@@ -105,7 +105,7 @@ print(f'Result: y = {a.item()} + {b.item()} x + {c.item()} x^2 + {d.item()} x^3'
 
 **最大的区别在于PyTorch中的Tensor可以选择是在CPU还是GPU中进行计算**。
 
-## PyTorch: Tensors and Autogard
+### PyTorch: Tensors and Autogard
 
 还是之前那个任务，这次用 Autograd 实现，文档中的注释已经写的非常明白了。有这么几个有意思的地方。
 
@@ -267,3 +267,153 @@ for t in range(2000):
 print(f'Result: y = {a.item()} + {b.item()} * P3({c.item()} + {d.item()} x)')
 ```
 
+### PyTorch:nn
+
+还是之前的那个任务，这次我们用神经网络来实现。
+
+我们先把输入裂开，整成$x$, $x^2$, $x^3$，三个输入，然后扔到一个只有一个线性层的神经网络中，损失函数选$MSE$，然后开始整。见示例代码。
+
+- 它这个线性层还会自己带着一个偏差。
+
+```py
+import torch
+import math
+
+
+# Create Tensors to hold input and outputs.
+x = torch.linspace(-math.pi, math.pi, 2000)
+y = torch.sin(x)
+
+# For this example, the output y is a linear function of (x, x^2, x^3), so
+# we can consider it as a linear layer neural network. Let's prepare the
+# tensor (x, x^2, x^3).
+p = torch.tensor([1, 2, 3])
+xx = x.unsqueeze(-1).pow(p)
+
+# In the above code, x.unsqueeze(-1) has shape (2000, 1), and p has shape
+# (3,), for this case, broadcasting semantics will apply to obtain a tensor
+# of shape (2000, 3)
+
+# Use the nn package to define our model as a sequence of layers. nn.Sequential
+# is a Module which contains other Modules, and applies them in sequence to
+# produce its output. The Linear Module computes output from input using a
+# linear function, and holds internal Tensors for its weight and bias.
+# The Flatten layer flatens the output of the linear layer to a 1D tensor,
+# to match the shape of `y`.
+model = torch.nn.Sequential(
+    torch.nn.Linear(3, 1),
+    torch.nn.Flatten(0, 1)
+)
+
+# The nn package also contains definitions of popular loss functions; in this
+# case we will use Mean Squared Error (MSE) as our loss function.
+loss_fn = torch.nn.MSELoss(reduction='sum')
+
+learning_rate = 1e-6
+for t in range(2000):
+
+    # Forward pass: compute predicted y by passing x to the model. Module objects
+    # override the __call__ operator so you can call them like functions. When
+    # doing so you pass a Tensor of input data to the Module and it produces
+    # a Tensor of output data.
+    y_pred = model(xx)
+
+    # Compute and print loss. We pass Tensors containing the predicted and true
+    # values of y, and the loss function returns a Tensor containing the
+    # loss.
+    loss = loss_fn(y_pred, y)
+    if t % 100 == 99:
+        print(t, loss.item())
+
+    # Zero the gradients before running the backward pass.
+    model.zero_grad()
+
+    # Backward pass: compute gradient of the loss with respect to all the learnable
+    # parameters of the model. Internally, the parameters of each Module are stored
+    # in Tensors with requires_grad=True, so this call will compute gradients for
+    # all learnable parameters in the model.
+    loss.backward()
+
+    # Update the weights using gradient descent. Each parameter is a Tensor, so
+    # we can access its gradients like we did before.
+    with torch.no_grad():
+        for param in model.parameters():
+            param -= learning_rate * param.grad
+
+# You can access the first layer of `model` like accessing the first item of a list
+linear_layer = model[0]
+
+# For linear layer, its parameters are stored as `weight` and `bias`.
+print(f'Result: y = {linear_layer.bias.item()} + {linear_layer.weight[:, 0].item()} x + {linear_layer.weight[:, 1].item()} x^2 + {linear_layer.weight[:, 2].item()} x^3')
+```
+
+### PyTorch：Optimization
+
+还是那个任务，加一个Optimizer。常见的SGD+momentum, RMSProp, Adam都可以在`torch.optim`中找到。
+
+```py
+optimizer = torch.optim.RMSprop(model.parameters(), lr=learning_rate)
+for t in range(2000):
+    # Forward pass: compute predicted y by passing x to the model.
+    y_pred = model(xx)
+
+    # Compute and print loss.
+    loss = loss_fn(y_pred, y)
+    if t % 100 == 99:
+        print(t, loss.item())
+
+    optimizer.zero_grad()
+
+    loss.backward()
+
+    optimizer.step()
+```
+
+### PyTorch: Custom nn Modules
+
+有时我们需要整一个比现有模型更复杂的模型。在这时我们可以通过继承`nn.Module`并定义一个`forward`来接受 Tensor 并输出 Tensor。下面的代码就定义了一个三次多项式模型。
+
+
+```py
+class Polynomial3(torch.nn.Module):
+    
+    def __init__(self):
+        super.__init__()
+        self.a = torch.nn.parameter(torch.randn(()))
+        self.b = torch.nn.Parameter(torch.randn(()))
+        self.c = torch.nn.Parameter(torch.randn(()))
+        self.d = torch.nn.Parameter(torch.randn(()))
+        
+    def forward(self, x):
+        return self.a + self.b * x + self.c * x ** 2 + self.d * x ** 3
+    
+    def string(self):
+        return f'y = {self.a.item()} + {self.b.item()} x + {self.c.item()} x^2 + {self.d.item()} x^3'
+
+```
+
+我们还是可以用`optim`来优化模型。
+
+### PyTorch: Control Flow + Weight Sharing
+
+在Torch的框架下，参数共享的操作是安全的，我们可以建立动态图的模型并用相同的方式优化。
+
+看示例代码的这一段和注释就明白一些了。
+```py
+    def forward(self, x):
+        """
+        For the forward pass of the model, we randomly choose either 4, 5
+        and reuse the e parameter to compute the contribution of these orders.
+
+        Since each forward pass builds a dynamic computation graph, we can use normal
+        Python control-flow operators like loops or conditional statements when
+        defining the forward pass of the model.
+
+        Here we also see that it is perfectly safe to reuse the same parameter many
+        times when defining a computational graph.
+        """
+        y = self.a + self.b * x + self.c * x ** 2 + self.d * x ** 3
+        for exp in range(4, random.randint(4, 6)):
+            y = y + self.e * x ** exp
+        return y
+```
