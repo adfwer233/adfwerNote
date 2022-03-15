@@ -52,8 +52,8 @@ $a = $best option so far from any MAX node on this path.
 
 - Move ordering
     - Worst ordering: $O(b^m)$ time
-    - Best ordering:  $O(b^{0.5m)$ time
-    - Random ordering: $O(b^{0.75m}$ time
+    - Best ordering:  $O(b^{0.5m})$ time
+    - Random ordering: $O(b^{0.75m})$ time
 
 - **evaluation function Eval(s)**
     
