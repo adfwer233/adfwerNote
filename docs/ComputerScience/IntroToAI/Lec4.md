@@ -1,4 +1,6 @@
-
+---
+title: "Lecture4: Search 3"
+---
 
 ## Adversarial Search
 ## Minimax Algorithm

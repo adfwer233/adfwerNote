@@ -1,5 +1,5 @@
 ---
-title: "Lecture2: Search1"
+title: "Lecture2: Search 1"
 ---
 
 ## Search Problems
@@ -33,13 +33,14 @@ A heuristic is
 ### A* Tree Search
 
 **Strategy: Combining UCS and Greedy Search**
+
 - Sorted by $f(n) = g(n) + h(n)$
     - $g(n)$: uniform cost by path cost
     - $h(n)$: greedy function
 
 #### When Should A* Terminate
 
-**Only stop wehn we dequeue a goal**
+**Only stop when we dequeue a goal**
 
 #### Optimality
 
@@ -50,6 +51,7 @@ $$ 0 \leq h(n) \leq h^*(n) $$
 !!!Theorem "Optimality of A^* search"
 
 Assume:
+
 - $A$ is an optimal goal node, $B$ is a suboptimal goal node
 - $h$ is admissible
 
@@ -57,13 +59,13 @@ Claim: $A$ will exit the frontier before $B$
 
 #### Efficiency
 
-A^* explores all state $s$ satisfying
+$A^*$ explores all state $s$ satisfying
 
 $$ g(s) \leq g(s_{goal}) - h(s) $$
 
-A^* is more efficient than UCS.
+$A^*$ is more efficient than UCS.
 
-### A^* Graph Search
+### $A^*$ Graph Search
 
 **Admissibility:**
 

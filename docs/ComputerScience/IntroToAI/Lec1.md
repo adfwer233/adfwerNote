@@ -1,5 +1,5 @@
 ---
-title: "Lec1: Intro"
+title: "Lecture1: Intro"
 ---
 
 ## Artificial Intelligence
