@@ -18,7 +18,7 @@ title: "Lecture 5"
 
 右线性文法
 
-$$ A \rightarrow xb \quad or \quad A \rightarrow x$$
+$$ A \rightarrow xB \quad or \quad A \rightarrow x$$
 
 左线性文法
 
