@@ -87,7 +87,7 @@ System call **dup** 会复制一个 fd，返回一个新的 fd，指向同一个
 
 <center>
 `ls existing-file non-existing-file > tmp1 2>&1`
-<\center>
+</center>
 这里 `2>&1` 表示 2 是 1 的复制，即重定向错误信息（2）到标准输出（1）。
 
 ## Pipes
@@ -263,3 +263,70 @@ runcmd(struct cmd *cmd)
 
 大概来说，这段代码是 Shell 的命令调用部分，开始那几个结构体声明了各种命令，注意到这里的命令实际上是一个链式结构，可以层层调用。
 
+## File system
+
+system call : 
+
+- `chdir` cd in linux
+- `mkdir`
+- `mknod`: Create a new device file
+    - When a process later open a device file, the kernel diverts read and write system calls to the kernel device implemention instead of passing them to the file system
+
+一个文件的文件名与文件本身是不同的，底层的同一个文件可能有多个 name，称之为 `links`。每个 link 由 directory 中的一个 `entry` 组成， 每个 `entry` 由一个文件名和一个指向底层文件（inode）的引用构成。
+
+inode 中包含了一个文件的 ‘metadata’
+
+- type (file or directory or device)
+- length
+- location of the files content on dist
+- number of links to a file
+
+`fstat` 是一个系统调用，它检索一个 file descriptor 指向的 inode 的一些信息
+
+```cpp
+#define T_DIR 1 // Directory
+#define T_FILE 2 // File
+#define T_DEVICE 3 // Device
+
+struct stat {
+  int dev; // File system’s disk device
+  uint ino; // Inode number
+  short type; // Type of file
+  short nlink; // Number of links to file
+  uint64 size; // Size of file in bytes
+};
+```
+
+!!!Question
+
+    What is the inode number?
+
+`link` 是一个系统调用，它创建另一个 file system name 指向一个已经存在的 inode，下面的指令创建了一个文件，named both a and b
+
+```shell
+open("a", O_CREATE|O_WRONLY);
+link("a", "b");
+```
+
+`unlink` 是一个系统调用，它 'removes a name from the file system'。文件的 inode 和文件内容占据的磁盘空间只在文件的 `link count` 为零时被释放。
+
+!!!Remark
+
+	下面的指令是一种惯用的创建临时 inode 且 with no name 的方式，创建的 inode 会在进程关闭 `fd` 或退出时被清理掉
+
+	```cpp
+	fd = open("/tmp/xyz", O_CREATE|O_RDWR);
+	unlink("/tmp/xyz");
+	```
+
+!!! Remark
+
+	cd 是 shell 的命令，是放在 shell 中的。如果 `cd` 按照常规指令的方式来运行，那么 `shell` 会 `fork` 一个子进程，子进程的目录改变但是父进程的目录没有改变。
+
+## Real World
+
+
+
+!!! Warning
+
+	Xv6 does not provide a notion of users or of protecting one user from another; In Unix terms, all xv6 processes run as root
