@@ -107,3 +107,7 @@ Then take the expectation and calculate ..., the math in CLRS is too annoying.
 The Key idea in the proof can be described in the following picture
 
 ![](source/5-3.png)
+
+!!! Warning
+    
+    The median just used for selection. This algorithm can be used in $O(n)$ $k$-th element algorithm
