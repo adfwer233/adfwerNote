@@ -5,21 +5,27 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.sections
+    - navigation.top
+  include_search_page: false
+  search_index_only: true
   palette:
-    - primary: "cyan"
-    - accent: "deep orange"
     - scheme: default
-      toggle:
-        icon: material/toggle-switch-off-outline 
-        name: Switch to dark mode
-    - scheme: slate 
+      primary: cyan
+      accent: cyan
       toggle:
         icon: material/toggle-switch
+        name: Switch to dark mode
+    - scheme: slate
+      primary: black
+      accent: black
+      toggle:
+        icon: material/toggle-switch-off-outline
         name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/favicon.png
   language: "zh"
-  icon:
-  admonition:
-    <type>: <icon>
 
 markdown_extensions:
   - toc:
@@ -32,6 +38,11 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
   - markdown_checklist.extension
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/adfwer233
 
 plugins:
   - mkdocs-jupyter:
