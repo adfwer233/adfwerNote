@@ -23,6 +23,7 @@ markdown_extensions:
 plugins:
   - mkdocs-jupyter:
       ignore_h1_titles: True
+      kernel_name: python3
 
 extra_javascript:
   - javascripts/mathjax.js
