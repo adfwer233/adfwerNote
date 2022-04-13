@@ -6,8 +6,16 @@ theme:
     - navigation.tabs.sticky
     - navigation.sections
   palette:
-      primary: "black"
-      accent: "deep orange"
+    - primary: "cyan"
+    - accent: "deep orange"
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline 
+        name: Switch to dark mode
+    - scheme: slate 
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
   language: "zh"
   icon:
   admonition:
