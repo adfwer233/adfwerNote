@@ -4,6 +4,7 @@ theme:
   features:
     - navigation.tabs
     - navigation.tabs.sticky
+    - navigation.sections
   palette:
       primary: "black"
       accent: "deep orange"
