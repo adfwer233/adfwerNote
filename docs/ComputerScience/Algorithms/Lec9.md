@@ -96,7 +96,7 @@ return EXTRACT-MIN(Q)
 
 !!! Definition
 
-    Give a matroid $M = (S ,\mathcal{I})$, we call an element $x \notin A$ an **extension** of $A$ \in \mathcal{I}$ if $x$ can be added to $A$ while preserving independence; that is $x$ is an extension of $A$ if $A \cup \{x} \in \mathcal{I}$
+    Give a matroid $M = (S ,\mathcal{I})$, we call an element $x \notin A$ an **extension** of $A$ \in \mathcal{I}$ if $x$ can be added to $A$ while preserving independence; that is $x$ is an extension of $A$ if $A \cup \{x\} \in \mathcal{I}$
 
     - $A$ is maximal if it has no extensions.
 
