@@ -1,158 +1,119 @@
 ---
-title: Lecture 8
+title: Lecture 9
 ---
 
-## Knapsack problem
+## Dynamic tables
 
-!!! Question "knapsack problem"
+!!!Question
 
-    - 0-1 knapsack problem
-    - Fractional knapsack problem
+    How large should a hash table or an array be?
 
-    Given $n$ items, the $i$th item is worth $v_i$ dollars and weights $w_i$ pounds, where $v_i$ and $w_i$ are integers. Give a knapsack with capacity $W$ pounds, how to get a load with most valuable items?
+    **Goal:** Make the table as small as possible, but large enough so that it won't overflow.
 
-- Greedy selection only works on Fractional knapsack problem
+    **Dynamic tables**
 
-## Huffman codes
+    - Example: vector in STL
+
+### Analysis
+
+Let $c_i$ be the cost of the $i$th insertion.
+
+$$
+c_i = \begin{cases}
+    &i \quad \text{if $i - 1 = 2^m$} \\
+    &1 \quad \text{otherwise}
+\end{cases}
+$$
+
+$$
+Cost = \sum_{i = 1}^n c_i \leq n + \sum_{j=0}^{\lfloor \lg n\rfloor} 2^j < 3n = \Theta(n)
+$$
+
+The average cost of each dynamic-table operation is $\Theta(n)/ n = \Theta(1)$
+
+### Amortized analysis
+
+!!!Definition
+
+    An amortized analysis is any strategy for analyzing a sequence of operations to show that the average cost per operation is small, even though a single operation with in the sequence might be expensive.
+
+    - the **aggregate** method
+    - the **accounting** method
+    - the **potential** method
+## Aggregate analysis
+
+### Incrementing a binary counter
 
 !!! Definition
 
-    A **variable-length code** can do considerably better than a fixed-length code
-
-    Prefix(-free) codes: The codes in which no codeword is also a prefix of some other codeword
-
-!!! Huffman codes
-
-    give frequent characters short codewords and infrequent characters long codewords
-
-!!! Cost of a tree
-
-    $$B(T) = \sum_{c \in C} c.freq \cdot d_T(c)$$
-
-    $d_T(c)$ is the depth of $c$ in the tree $T$
-
-### Constructing a Huffman code
-
-```
-for i = 1 to n-1
-    allocate a new node z
-    z.left = x = EXTRACT-MIN(Q)
-    z.right = y = EXTRACT-MIN(Q)
-    z.freq = x.freq + y.freq
-    INSERT(Q,z)
-return EXTRACT-MIN(Q)
-```
-
-### Correctness of Huffman's Algorithm
-
-!!! Idea
-
-    Prove the greedy selcetion is "safe"
-
-!!! Lemma 
-
-    Let $C$ be an alphabet in which each character $c \in C$ has frequency $c.freq$. Let $x$ and $y$ be two characters in $C$ having the lowest frequencies. Then there exists an optimal prefix code for $C$ in which the codewords for $x$ and $y$ **have the same length and differ only in the last bit**
-
-    "The greedy selection properity"
-
-    !!! Proof
-
-        We prove the lemma by construction. Convert a optimal solution to another optimal solution with the given prop in the lemma.
-
-        ![](source/8-1.png)
-
-!!! Lemma
+    incrementing a k-bit binary counter that counts upward from 0.
     
-    Let $C' = \{C - \{x,y\}\} \cup \{z\}$, where $z.freq = x.freq + y.freq$. Let $T'$ be any tree representing an optimal prefix code for alphabet $C'$. Then the tree $T$, obtained from $T'$ by replacing the leaf node for $z$ with an internal node having $x$ and $y$ as children, represents an optimal prefix code for the alphabet $C$.
 
-    !!! Proof
-
-        $B(T) = B(T') + x.freq + y.freq$
-
-        "**Optimal substructure**"
-
-!!! Theorem 
-
-    Procedure *HUFFMAN* produces an optimal prefix code.
-
-    !!! Proof
-
-        Corollary of the two lemmas
-
-## Matroids
+## The accounting method
 
 !!! Definition
 
-    A **matroid** is an ordered pair $M = (S, \mathcal{I})$ satisfying the following conditions.
+    The credit in the bank must not go negative, we require
 
-    - S is a finite nonempty set
-    - $\mathcal{I}$ is hereditary: $\mathcal{I}$ is nonempty family of subsets of $S$, called the **independent** subset of $S$, such that if $B \in \mathcal{I}$ and $A \subset B$ the $A \in \mathcal{I}$. Obvious $\emptyset \in \mathcal{I}$
-    - if $A,B \in \mathcal{I}$ , and $|A| < |B|$, then there is some elements $x \in B \setdiff A$ such that $A \cup \{x\} \in \mathcal{I}$. **exchange property**
+    $$ \sum_{i=1}^n \hat{c_i} \geq \sum_{i=1}^n c_i $$
 
-!!! Example
+    for all $n$
 
-    Graphic matroid.
+### Accounting analysis of dynamic tables
 
+- Charge an amortized cost of $\hat{c_i} = 3$ for the $i$th insertion.
+    - $1$ pays for the immediate insertion
+    - $2$ is stored for later table doubling
+  
+### Incrementing a binary counter
 
-!!! Definition
+- Charge an amortized cost of $\hat{c_i}$ to set a bit to $1$
+    - the other for flip back
+- At any point in time, every $1$ in the counter has a dollar of credit on it, and thus we needn't charge anything to reset a bit to 0.
 
-    Give a matroid $M = (S ,\mathcal{I})$, we call an element $x \notin A$ an **extension** of $A$ \in \mathcal{I}$ if $x$ can be added to $A$ while preserving independence; that is $x$ is an extension of $A$ if $A \cup \{x\} \in \mathcal{I}$
+## The potential method
 
-    - $A$ is maximal if it has no extensions.
+!!! Note "Idea"
+    
+    View credit stored as the **potential energy** of the dynamic set.
 
-!!! Theorem
+    - Start with an initial data structure $D_0$
+    - Operation $i$ transforms $D_{i - 1}$ to $D_i$
+    - The cost of operation $i$ is $c_i$
+    - Define a **potential function** $\phi$, $\phi(D_0) = 0$, $\phi(D_i) \geq 0 \forall i$
+    - The amortized cost $\hat{c_i} $ with respect to $\phi$ is defined to be $\hat{c_i} = c_i + \phi(D_i) - \phi(D_{i -1})$
 
-    All maximal independent subsets in a matroid has the same size
+    If $\Delta \phi_i > 0$, Operation $i$ stores work in the data structure for later use.
 
-    !!! Example
+!!! note "The amortized costs bound the true costs"
 
-        Spanning tree is the maximal set in the Graphic matroid.
+    $$\sum_{i=1}^n \hat{c_i} \geq \sum_{i=1}^{n} c_i$$
 
-!!! Definition "Weighted Matroid"
+### Dynamic table insertion
 
-    a strictly positive weight $w(x)$ to each element $x \in S$.
+$$\phi(D_i) = 2 num_i - size_i$$
 
-    $w(A) = \sum_{x \in A} w(x)$
+It's easy to check that it is a potential function.
 
-- Why weighted matroid
-    - Many problems for which a greedy approach provides optimal solutions can be formulated in terms of finding a **maximum-weight independent subset** in a weighted matroid.
-    - Example: Minimum-spanning-tree problem
+We calculate $\hat{c_i} = c_i + \phi_{D_i} - \phi_{D_{i-1}} = 3$
 
-### Greedy algorithm on a weight matroid
+### Table contraction
 
-```
-A = \emptyset
-sort M.S into monotonically decreasing order by weight w
-for each x in M.S, taken in monotonically, decreasing order by weight w(x)
-    if A \cup {x} \in M.I
-        A = A \cup {x}
-return A
-```
+!!!note "When to contract"
 
-This is an $O(n \lg n + n(f(n))$ algorithm, f(n) is the complexity of judging independence.
+    $\alpha(T) = num(T)/size(T) < 1/4$ is a good choice
 
-### Correctness of the Algorithm
+!!!definition "Potential function"
 
-!!! Lemma
+    $$
+        \phi(T) = \begin{cases}
+            2 num[T] - size[T]  \quad &\text{if $\alpha(T) \geq 1/2$} \\
+            size[T]/2 -num[T] \quad &\text{if $\alpha(T) < 1/2$}
+        \end{cases}
+    $$
 
-    **Matroids exhibit the greedy-choice property**
+### Incrementing a binary counter
 
-    **Prove by construction** !!!
+We define the potential of the counter after the $i$th Increament operation to be $b_i$, the number of 1's in the counter after the $i$th operation
 
-!!! Lemma
-
-    Let $M = (S, \mathcal{I})$ be any matroid. If $x$ is an element of $S$ that is an extension of some independent subset $A$ of $S$, then $x$ is also an extension of $\emptyset$.
-
-    Let $M = (S, \mathcal{I})$ be any matroid. If $x$ is an element of $S$ such that $x$ is not an extension of $\emptyset$, then $x$ is not an extension of any independent subset $A$ of $S$.
-
-!!! Lemma
-
-    Matroids exhibit the optimal-substructure property
-
-!!! Theorem "Correctness of the greedy algorithm on matroids"
-
-    If $M = (S, \mathcal{I})$ is a weighted matroid with weight function $w$ , then $GREEDY(M, w )$ returns an optimal subset.
-
-## A task-scheduling problem
-
-**scheduling unit-time tasks with deadlines and penalties for a single processor**
+## Fibonacci Heaps
