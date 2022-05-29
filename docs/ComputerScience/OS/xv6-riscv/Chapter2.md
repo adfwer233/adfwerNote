@@ -85,9 +85,7 @@ CPU 提供了 strong isolation 的硬件支持，例如，在RISC-V CPU 有三�
 
     There is much debate among developers of operating systems which organization is better, and there is no conclusive evidence one way or the other. Furthermore, it depends much on what “better” means: faster performance, smaller code size, reliability of the kernel, reliability of the complete operating system (inclusing user-level services), etc.
 
-<center>
-![Xv6 kernel source files](source/2-1.png)
-</center>
+![](source/2-1.png)
 
 ## Process overview
 
