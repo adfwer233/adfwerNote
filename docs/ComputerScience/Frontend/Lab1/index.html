@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" href="./style.css">
+        <script src="script.js"></script>
+    </head>
+    <body id="popup" onload="init()">
+        <div id="app">
+            <div class="greet">欢迎 test</div>
+            <div id="main">
+                <h2 class="user_name" id="uname">{{ myusername }}</h2>
+
+                <div id="info_content">
+                    <div class="text_label">
+                        已连接
+                        <p class="en_label">Duration</p>
+                    </div>
+                    <div class="text_info"> 
+                        <span id="clock" style="color: #ec6677">{{ clocknow }}</span>
+                    </div>
+                    <div class="text_label">
+                        已用流量
+                        <p class="en_label">Usage</p>
+                    </div>
+                    <div class="usage_bar">
+                        <div id="usage_value"></div>
+                        <ul class="calibration">
+                            <li v-for="value in calibration_steps"> {{ value }}</li>
+                        </ul>
+                        <div class="content_text">
+                            <span class="unit" id="usage_flux"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <dir class="greet_triangle"></dir>
+            <dir class="corner_triangle"></dir>
+            <div id="panel">
+                <button id="disconnect"></button>
+            </div>
+            <ul id="links">
+                <imglinks v-for="item in links" v-bind:linkinfo="item"></imglinks>
+            </ul>
+        </div>
+    </body>
+</html>
+
+
+<script>
+    Vue.component('imglinks', {
+        props: ['linkinfo'],
+        template: '<li> <a class="linkitem" v-bind:href="linkinfo.url" :title="linkinfo.title" :style="linkinfo.style">{{ linkinfo.text }} </a></li>'
+    })
+    new Vue({
+        el: '#app',
+        data: {
+            myusername: 'adfwer',
+            clocknow: 'testclock',
+            calibration_steps: [125, 100, 75, 50],
+            links: [
+                { text: 'Info', url: 'https://info.tsinghua.edu.cn', title: "清华信息门户 info.tsinghua", style: 'background:url(./image/wireless/popup_info.gif) no-repeat 2px 2px'},
+                { text: 'Lib', url: 'https://lib.tsinghua.edu.cn', title: "清华图书馆 lib.tsinghua", style: 'background:url(./image/wireless/popup_lib.gif) no-repeat 2px 2px'},
+                { text: 'Learn', url: 'https://learn.tsinghua.edu.cn', title: "清华网络学堂 learn.tsinghua", style: 'background:url(./image/wireless/popup_learn.gif) no-repeat 2px 2px'},
+                { text: 'Mail', url: 'https://mails.tsinghua.edu.cn', title: "清华邮箱 mails.tsinghua", style: 'background:url(./image/wireless/popup_mail.gif) no-repeat 2px 2px'},
+            ]
+        }
+    })
+</script>   

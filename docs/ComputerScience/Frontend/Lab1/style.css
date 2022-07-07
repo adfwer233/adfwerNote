@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.en_label {
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+body {
+    min-width: 768px;
+    font-family: "Microsoft YaHei", "SimHei", "Apple LiGothic Medium";
+    background: #E6E6E6 url(./image/wireless/popup_bg.png) no-repeat top right;
+}
+
+#popup #app {
+    position: relative;
+    width: 640px;
+    height: 480px;
+    background: url(./image/popup_shadow.png) no-repeat 48px 344px;
+}
+
+#app{
+    margin: auto;
+    width: 768px;
+    height: 100%;
+}
+
+.greet,
+#title,
+#popup .alert {
+    text-indent: -999em;
+    overflow: hidden;
+}
+
+.greet {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 720px;
+    height: 304px;
+    background: #E64E2E url(./image/wireless/greeting.png) no-repeat 32px 28px;
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+
+#popup .greet {
+    top: 64px;
+    left: 48px;
+    width: 512px;
+    height: 224px;
+    background: #E64E2E url(./image/wireless/popup_greeting.png) no-repeat 30px 46px;
+}
+
+#login,
+#popup #main {
+    position: absolute;
+    top: 32px;
+    left: 304px;
+    width: 464px;
+    height: 304px;
+    background: #F2F2F2;
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+
+#popup #main {
+    top: 96px;
+    left: 176px;
+    padding: 32px;
+    width: 352px;
+    height: 208px;
+}
+
+#main #info_content {
+    float: left;
+    margin-top: -8px;
+}
+
+#main .text_label {
+    clear: left;
+    float: left;
+    width: 56px;
+    height: 32px;
+    margin-top: 22px;
+    text-align: right;
+    font-size: 13px;
+}
+
+#main .en_label {
+    font-size: 13px;
+}
+
+#main .text_info {
+    float: left;
+    margin: 24px 0 0 20px;
+    padding-top: 4px;
+    height: 28px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    font-weight: lighter;
+}
+
+#main .usage_bar {
+    position: relative;
+    float: left;
+    margin: 24px 0 0 16px;
+    padding: 0;
+    width: 280px;
+    height: 32px;
+    background: url("./image/wired/usage_bg.gif");
+}
+
+#main .usage_bar .calibration {
+    position: absolute;
+    top: -16px;
+    right: 14px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 13px;
+    color: #969696;
+}
+
+.calibration li {
+    float: right;
+    width: 53px;
+    text-align: right;
+    list-style: none;
+}
+
+#main .user_name {
+    float: left;
+    color: #E64E2E;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 34px;
+    font-weight: lighter;
+}
+
+#popup #panel {
+    position: absolute;
+    top: 304px;
+    right: 32px;
+    width: 208px;
+    height: 80px;
+    background: #FFFFFF;
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+#disconnect {
+    margin: 16px;
+    width: 174px;
+    height: 46px;
+    border: #B2AABE solid 1px;
+    background: #C0BDCC url(./image/disconnect.png) no-repeat center 0;
+    overflow: hidden;
+}
+
+
+.greet_triangle {
+    position: absolute;
+    left: 80px;
+    top: 288px;
+    border-color: #E64E2E transparent;
+    border-width: 48px 48px 0 0;
+    border-style: solid;
+}
+
+.corner_triangle {
+    position: absolute;
+    top: 288px;
+    left: 592px;
+    border-color: transparent #CCCCCC;
+    border-width: 16px 0 0 16px;
+    border-style: solid;
+}
+
+#links {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    width: 234px;
+    list-style: none;
+}
+
+#links li {
+    float: left;
+    margin-right: 12px;
+    font-size: 11px;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+#links li a {
+    display: block;
+    padding: 16px 0 0 26px;
+    height: 16px;
+    color: #AD3B23;
+}
+
+#links li:last-child {
+    float: right;
+    margin: 0;
+}
+
+.usage_bar #usage_value {
+    float: left;
+    height: 32px;
+    max-width: 280px;
+    background: #FBB03B;
+}
+
+#main .usage_bar .content_text {
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    float: none;
+    margin: 0;
+    padding: 0;
+}
+
+#main .content_text {
+    float: left;
+    margin: 24px 0 0 20px;
+    padding-top: 4px;
+    height: 28px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    font-weight: lighter;
+}
+
+#usage_flux {
+    margin-left: 8px;
+    font-size: 24px;
+    color: #5C5C5C;
+}
